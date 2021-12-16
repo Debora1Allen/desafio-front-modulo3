@@ -1,0 +1,8 @@
+main{
+    background-color: #FFF;
+    border-radius: 60px;
+    height: calc(100vh - 220px);
+    margin-top: -80px;
+   min-width: 100vw;
+
+}

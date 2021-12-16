@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.table{
+    width: 950px;
+}
+
+.table-body{
+   display: flex;
+   flex-direction: column;
+}
+
+.table-line{
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+ width: 964px;
+height: 55px;
+}
+
+.line-items{
+
+}
