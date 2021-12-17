@@ -1,8 +1,28 @@
 main{
+    display: flex;
+    gap: 40px;
     background-color: #FFF;
     border-radius: 60px;
     height: calc(100vh - 220px);
     margin-top: -80px;
    min-width: 100vw;
 
+}
+
+.btn-add{
+    all: unset;
+    width: 236px;
+  height: 42px;
+  background: linear-gradient(91.26deg, #FA8C10 0%, #FF57D3 97.77%);
+border-radius: 5px;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+margin-top: 15px;
 }

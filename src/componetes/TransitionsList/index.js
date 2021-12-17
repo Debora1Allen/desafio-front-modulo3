@@ -13,13 +13,13 @@ function List() {
                     <div className='line-items'>Conteudo</div>
                     <div className='line-items'>Conteudo</div>
                     <div className='line-items'>Conteudo</div>
-                    <div className='line-items'>Conteudo</div>
-                    <div className='line-items'>Conteudo</div>
+                    <div className='line-items'></div>
 
-                    <div>
-                        <img src={editIcon} className='edit-icon' />
-                        <img src={deleteIcon} className='delete-icon' />
-                    </div>
+
+
+                    <img src={editIcon} className='edit-icon' />
+                    <img src={deleteIcon} className='delete-icon' />
+
                 </div>
 
             </div>
