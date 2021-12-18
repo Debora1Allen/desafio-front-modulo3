@@ -10,7 +10,7 @@ main{
 }
 
 .btn-add{
-    all: unset;
+   border: none;
     width: 236px;
   height: 42px;
   background: linear-gradient(91.26deg, #FA8C10 0%, #FF57D3 97.77%);

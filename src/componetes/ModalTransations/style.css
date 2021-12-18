@@ -1,0 +1,72 @@
+.modal-storage{
+      width: 500px;
+  height: 700px;
+}
+
+.modal-storage form{
+    width: 90%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal-storage h2{
+    font-family: 'Rubik',sans-serif;
+    font-size: 25px;
+    text-align: left;
+    width: 90%;
+    margin: 0;
+    
+    
+    }
+    .modal-storage input{
+        width: 100%;
+        margin: 5px 0;
+        padding: 0 10px;
+    }
+.container-buttons{
+    width: 90%;
+    display: flex;
+    text-align: center;
+}
+
+.container-btn-insert{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.confirm-insert{
+    border:none;
+    color: #FFF;
+    width: 40%;
+    height: 35px;
+    background: #645FFB;
+border-radius: 5px;
+margin-top: 30px;
+font-size: 12px;
+}
+.btn-ent{
+    border: none;
+    width: 50%;
+    height: 50px;
+    padding: 5px;
+   background: #B9B9B9;
+
+color: #FFF;
+}
+
+.btn-ent:first-child{
+border-radius: 10px 0px 0px 10px;
+}
+
+.btn-ent:last-child{
+border-radius: 0px 10px 10px 0px;
+}
+.credit{
+background: linear-gradient(91.26deg, #05EDE3 0%, #3A9FF1 97.77%);
+}
+
+.debit{
+    background: linear-gradient(91.66deg, #FA8C10 0%, #FF576B 90.32%);
+}
