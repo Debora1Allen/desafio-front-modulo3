@@ -7,11 +7,11 @@ function ModalDelete({ show, message, handleConfirm, setShow }) {
 
         <>
             {show &&
-                <div>
-                    <div></div>
+                <div className='confirm-delete'>
+                    <div className='arrow-up'></div>
                     <span>{message}</span>
-                    <button onClick={() => handleConfirm()}>Sim</button>
-                    <button onClick={() => setShow(false)}>Não</button>
+                    <button className='btn-confirm blue' onClick={() => handleConfirm()}>Sim</button>
+                    <button className='btn-confirm red' onClick={() => setShow()}>Não</button>
                 </div>
             }
         </>

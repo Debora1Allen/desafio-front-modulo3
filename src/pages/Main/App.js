@@ -10,13 +10,22 @@ function App() {
   const [open, setOpen] = useState(false);
   const [transactions, setTransaction] = useState([]);
   const [currentUser, setCurrentUser] = useState(false);
-
+  const [reload, setReload] = useState(false);
   useEffect(() => {
     if (currentUser) {
-      setOpen(true);
+      return setOpen(true);
     }
   }, [currentUser])
 
+  useEffect(() => {
+    if (!open) {
+      handleLoad();
+    }
+  });
+
+  function handlreOrderTransactions(newTransactions) {
+    setTransaction(newTransactions)
+  }
 
   useEffect(() => {
     if (!open) {
@@ -46,6 +55,9 @@ function App() {
       <main>
         <List transactions={transactions}
           setCurrentUser={setCurrentUser}
+          setReload={setReload}
+          reload={reload}
+          handlreOrderTransactions={handlreOrderTransactions}
         />
         <div>
           <Resume transactions={transactions} />

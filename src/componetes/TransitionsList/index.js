@@ -9,17 +9,22 @@ import { useState } from 'react';
 
 
 
-function List({ transactions, setCurrentUser }) {
+function List({ transactions, setCurrentUser, setReload, reload, handlreOrderTransactions }) {
 
     const [idDelete, setIdDelete] = useState(null);
 
-    function handleDelete() {
-
-
+    async function handleDelete() {
+        await fetch(`http://localhost:3333/transactions/${idDelete}`, {
+            method: 'DELETE'
+        });
+        setIdDelete(null);
+        setReload(!reload);
     }
 
     return (
-        <div className='table'><HeaderList />
+        <div className='table'><HeaderList
+            transactions={transactions}
+            handlreOrderTransactions={handlreOrderTransactions} />
             <div className='table-body'>
                 {transactions.map((item) => (
                     <div className='table-line' key={item.id}>
