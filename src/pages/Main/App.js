@@ -9,10 +9,25 @@ import { useEffect, useState } from 'react';
 function App() {
   const [open, setOpen] = useState(false);
   const [transactions, setTransaction] = useState([]);
+  const [currentUser, setCurrentUser] = useState(false);
 
   useEffect(() => {
-    handleLoad();
-  }, [])
+    if (currentUser) {
+      setOpen(true);
+    }
+  }, [currentUser])
+
+
+  useEffect(() => {
+    if (!open) {
+
+      handleLoad();
+    }
+    if (!open && currentUser) {
+      setCurrentUser(false);
+    }
+
+  }, [open])
   async function handleLoad() {
 
     const response = await fetch('http://localhost:3333/transactions', {
@@ -29,9 +44,11 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <List transactions={transactions} />
+        <List transactions={transactions}
+          setCurrentUser={setCurrentUser}
+        />
         <div>
-          <Resume />
+          <Resume transactions={transactions} />
           <button className='btn-add' onClick={() => setOpen(true)}>Adicionar Registro</button>
         </div>
 
@@ -39,6 +56,8 @@ function App() {
       <ModalRegister
         open={open}
         setOpen={setOpen}
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
       />
 
     </div>

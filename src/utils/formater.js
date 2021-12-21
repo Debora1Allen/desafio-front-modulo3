@@ -5,7 +5,7 @@ import { ptBR } from 'date-fns/locale';
 export function formarterWord(word) {
     return word[0].toUpperCase() + word.slice(1, word.length);
 }
-
+//formata a moeda
 export function formate(value) {
     const number = new Number(value);
     return number.toLocaleString('pt-br', {

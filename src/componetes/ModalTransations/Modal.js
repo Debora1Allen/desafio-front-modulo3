@@ -3,6 +3,7 @@ import close from '../../assests/closeBtn.svg';
 import { useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
 import { formateWeekDay } from '../../utils/formater';
+import { format } from 'date-fns'
 
 
 const defaultValuesForm = {
@@ -13,19 +14,58 @@ const defaultValuesForm = {
 }
 
 
-function ModalRegister({ open, setOpen }) {
+function ModalRegister({ open, setOpen, currentUser }) {
     const [active, setActive] = useState('debit');
     const [form, setForm] = useState(defaultValuesForm);
 
     useEffect(() => {
-        if (open) {
+        if (open && !currentUser) {
             setForm(defaultValuesForm);
+            return;
         }
-    }, [open]);
+
+        if (currentUser) {
+            setActive(currentUser.type);
+
+            setForm({
+                date: format(new Date(currentUser.date), 'dd/MM/yyyy'),
+                category: currentUser.category,
+                value: currentUser.value,
+                description: currentUser.description
+            });
+        }
+
+    }, [currentUser, open])
+
+
+
+
 
     function handleChange(target) {
         setForm({ ...form, [target.name]: target.value })
     }
+
+    async function updateTransaaction(post) {
+        await fetch(`http://localhost:3333/transactions/${currentUser.id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(post),
+        });
+    }
+
+    async function registerTransaction(post) {
+        await fetch('http://localhost:3333/transactions', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(post),
+        });
+    }
+
+
     async function handleRegister(event) {
         event.preventDefault();
 
@@ -39,16 +79,16 @@ function ModalRegister({ open, setOpen }) {
             category: form.category,
             type: active
         }
-        const response = await fetch('http://localhost:3333/transactions', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(post),
-        });
 
-        await response.json();
+        if (currentUser) {
+            await updateTransaaction(post)
+            setOpen(false);
+            return;
+        }
+
+        await registerTransaction(post)
         setOpen(false);
+
     }
 
     return (

@@ -3,13 +3,20 @@ import deleteIcon from '../../assests/lixeira.svg';
 import HeaderList from './HeaderList';
 import './style.css';
 import { formate, formatDate, formarterWord } from '../../utils/formater';
+import ModalDelete from '../ConfirmDelete';
+import { useState } from 'react';
 
 
 
 
-function List({ transactions }) {
+function List({ transactions, setCurrentUser }) {
+
+    const [idDelete, setIdDelete] = useState(null);
+
+    function handleDelete() {
 
 
+    }
 
     return (
         <div className='table'><HeaderList />
@@ -27,8 +34,13 @@ function List({ transactions }) {
 
                         </div>
                         <div className='line-items'></div>
-                        <img src={editIcon} className='edit-icon' />
-                        <img src={deleteIcon} className='delete-icon' />
+                        <img src={editIcon} className='button-action'
+                            onClick={() => setCurrentUser(item)}
+                        />
+                        <img src={deleteIcon} className='button-action'
+                            onClick={() => setIdDelete(item.id)}
+                        />
+                        <ModalDelete show={item.id === idDelete} setShow={() => setIdDelete(null)} message='Apagar item?' handleConfirm={() => handleDelete()} />
                     </div>
                 ))}
             </div>
