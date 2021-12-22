@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { traverseTwoPhase } from 'react-dom/cjs/react-dom-test-utils.production.min';
 import { useEffect } from 'react/cjs/react.development';
 import setaDown from '../../../assests/setaBaxio.svg';
 import setaUp from '../../../assests/setaFiltro.svg';
 import './style.css';
+import { orderColumnAsc, orderColumnDesc } from './utils';
+
 
 
 function HeaderList({ handlreOrderTransactions, transactions }) {
@@ -21,13 +22,15 @@ function HeaderList({ handlreOrderTransactions, transactions }) {
     function orderAllTransiAsc() {
         const localTransaction = [...transactions];
 
-        localTransaction.sort((a, b) => {
-
-        })
+        localTransaction.sort((a, b) => orderColumnAsc(a, b, filter))
+        handlreOrderTransactions(localTransaction);
     }
 
     function orderAllTransiDesc() {
+        const localTransaction = [...transactions];
 
+        localTransaction.sort((a, b) => orderColumnDesc(a, b, filter))
+        handlreOrderTransactions(localTransaction);
     }
 
     function handleCahngeFiulter(type) {

@@ -4,6 +4,7 @@ import Resume from '../../componetes/Resumo';
 import ModalRegister from '../../componetes/ModalTransations/Modal';
 import './App.css';
 import { useEffect, useState } from 'react';
+import Filters from '../../componetes/Filters';
 
 
 function App() {
@@ -52,13 +53,16 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <main>
-        <List transactions={transactions}
-          setCurrentUser={setCurrentUser}
-          setReload={setReload}
-          reload={reload}
-          handlreOrderTransactions={handlreOrderTransactions}
-        />
+        <div>  <Filters />
+          <List transactions={transactions}
+            setCurrentUser={setCurrentUser}
+            setReload={setReload}
+            reload={reload}
+            handlreOrderTransactions={handlreOrderTransactions}
+          />
+        </div>
         <div>
           <Resume transactions={transactions} />
           <button className='btn-add' onClick={() => setOpen(true)}>Adicionar Registro</button>
